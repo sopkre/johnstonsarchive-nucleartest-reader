@@ -1,0 +1,44 @@
+# Config for France tables
+
+general:
+  state: FR
+
+html_general:
+  urls:
+  - "https://www.johnstonsarchive.net/nuclear/tests/FR-ntests1.html"
+  table_lines_in_html_file:
+  - [13, 223]
+
+columns:
+  ID: [0, 7, int]
+  SERIES: [7, 23, str]
+  SHOTNAME: [23, 43, str]
+  SHOTTYPE: [43, 46, str]
+  YEAR: [46, 52, int]
+  MON: [52, 57, str] 
+  DAY: [57, 61, int]
+  TIME: [61, 76, str] 
+  SITE: [76, 84, str]
+  LAT: [85, 97, float] 
+  LONG: [100, 108, float] 
+  NT-LONG: [108, 111, str] 
+  HOLE: [111, 119, str]
+  HOB: [119, 132, float] 
+  GZALT: [132, 137, int]
+  NT-GZALT: [137, 140, str]
+  TYPE: [140, 147, str]
+  PUR: [147, 153, str]
+  YD-MN: [153, 160, float]
+  YD-MX: [160, 166, float]
+  YD-EST: [166, 170, float]
+  NT-YD: [172, 174, str]
+  YIELD: [177, 181, float]
+  MAG: [181, 187, float]
+  CRAT: [187, 192, str]
+  VENT: [192, 195, str]
+  DEVICE: [195, 204, str]
+  WARHEAD: [204, 214, str]
+  SPONSOR: [214, 220, str]
+  R: [220, 222, str]
+  N: [222, 224, str]
+  SOURCES: [224, 250, str]

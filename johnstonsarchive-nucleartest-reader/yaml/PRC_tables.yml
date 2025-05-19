@@ -1,0 +1,46 @@
+# Config for China tables
+
+
+general:
+  state: PRC
+
+
+html_general:
+  urls:
+  - "https://www.johnstonsarchive.net/nuclear/tests/PRC-ntests1.html"
+  table_lines_in_html_file:
+  - [13, 61]
+
+columns:
+  ID: [0, 7, int]
+  SERIES: [7, 23, str]
+  SHOTNAME: [23, 43, str]
+  SHOTTYPE: [43, 46, str]
+  YEAR: [46, 52, int]
+  MON: [52, 57, str] 
+  DAY: [57, 61, int]
+  TIME: [61, 76, str] 
+  SITE: [76, 83, str]
+  LAT: [83, 94, float] 
+  LONG: [94, 106, float] 
+  NT-LONG: [106, 111, str] 
+  HOLE: [111, 119, str]
+  HOB: [119, 130, float] 
+  GZALT: [130, 135, int]
+  NT-GZALT: [135, 139, str]
+  TYPE: [139, 146, str]
+  PUR: [146, 150, str]
+  YD-MN: [150, 158, float]
+  YD-MX: [158, 164, float]
+  YD-EST: [164, 169, float]
+  NT-YD: [169, 172, str]
+  YIELD: [172, 181, float]
+  MAG: [181, 187, float]
+  CRAT: [187, 192, str]
+  VENT: [192, 194, str]
+  DEVICE: [194, 203, str]
+  WARHEAD: [203, 216, str]
+  SPONSOR: [217, 219, str]
+  R: [219, 221, str]
+  N: [221, 223, str]
+  SOURCES: [223, 250, str]

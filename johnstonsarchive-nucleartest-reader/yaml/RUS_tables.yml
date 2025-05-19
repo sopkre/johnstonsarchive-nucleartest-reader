@@ -1,0 +1,48 @@
+# Config for USSR/RUS tables
+
+general:
+  state: USSR
+
+html_general:
+  urls:
+  - "https://www.johnstonsarchive.net/nuclear/tests/USSR-ntests1.html" 
+  - "https://www.johnstonsarchive.net/nuclear/tests/USSR-ntests2.html" 
+  - "https://www.johnstonsarchive.net/nuclear/tests/USSR-ntests3.html"
+  table_lines_in_html_file:
+  - [13, 241]
+  - [12, 408]
+  - [12, 370]
+
+columns:
+  ID: [0, 5, int]
+  SERIES: [5, 23, str]
+  SHOTNAME: [23, 43, str]
+  SHOTTYPE: [43, 48, str]
+  YEAR: [48, 54, int]
+  MON: [54, 59, str]
+  DAY: [59, 62, int]
+  TIME: [62, 78, str]
+  SITE: [78, 86, str]
+  LAT: [85, 96, float]
+  LONG: [96, 108, float]
+  NT-LONG: [108, 113, str]
+  HOLE: [113, 124, str]
+  HOB: [124, 132, float]
+  GZALT: [132, 137, float]
+  NT-GZALT: [137, 141, str]
+  TYPE: [141, 148, str]
+  PUR: [148, 152, str]
+  YD-MN: [152, 159, float]
+  YD-MX: [159, 164, float]
+  YD-EST: [164, 169, float]
+  NT-YD: [169, 172, str]
+  YIELD: [172, 180, float]
+  MAG: [180, 186, float]
+  CRAT: [186, 191, float]
+  VENT: [191, 197, str]
+  DEVICE: [197, 202, str]
+  WARHEAD: [202, 214, str]
+  SPONSOR: [214, 220, str]
+  R: [220, 222, str]
+  N: [222, 224, str]
+  SOURCES: [224, 252, str]
