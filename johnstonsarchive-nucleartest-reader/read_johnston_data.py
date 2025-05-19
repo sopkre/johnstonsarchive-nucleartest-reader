@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.13
 
+import os
 import yaml
 import pickle 
 import argparse
@@ -60,6 +61,13 @@ def get_data_from_johnstonarchive(urls, lines, indices, statename):
 def main(yamlfilename, outputfilename):
     """
     Main function to read data from the johnston nuclear weapon test database. 
+
+    Parameters
+    ---------
+    yamlfilename : str or list of str
+        Settings for data reading. Can be single yaml-file or folder with yaml-files.
+    outputfilename : str 
+        Filename to save the output pickle to.
     """
 
     print("----------------------------------")
@@ -67,20 +75,36 @@ def main(yamlfilename, outputfilename):
     print("----------------------------------")
     print()
 
-    with open(yamlfilename, 'r') as file:
-        settings = yaml.safe_load(file)
+    yamlfilename_list = [yamlfilename]
 
-    statename = settings["general"]["state"]
-    urls = settings["html_general"]["urls"]
-    table_lines_in_html = settings["html_general"]["table_lines_in_html_file"]
-    indices_dtypes = settings["columns"]
+    if os.path.isdir(yamlfilename): 
+        yamlfilename_list = [f"{yamlfilename}/{f}" for f in os.listdir(yamlfilename)]
 
-    dataypes_map = {"int" : int, "float": float, "str": str }
-    for key in indices_dtypes:
-        indices_dtypes[key][2] = dataypes_map[indices_dtypes[key][2]]
+    data = 0
+    for i, yamlfilename in enumerate(yamlfilename_list):
 
-    data = get_data_from_johnstonarchive(urls, table_lines_in_html, indices_dtypes, statename)
-    data.reset_index(drop = True, inplace = True)
+        print(f"[INFO] Extracting data using {yamlfilename}.")
+
+        with open(yamlfilename, 'r') as file:
+            settings = yaml.safe_load(file)
+
+        statename = settings["general"]["state"]
+        urls = settings["html_general"]["urls"]
+        table_lines_in_html = settings["html_general"]["table_lines_in_html_file"]
+        indices_dtypes = settings["columns"]
+
+        dataypes_map = {"int" : int, "float": float, "str": str }
+        for key in indices_dtypes:
+            indices_dtypes[key][2] = dataypes_map[indices_dtypes[key][2]]
+
+        data_state = get_data_from_johnstonarchive(urls, table_lines_in_html, indices_dtypes, statename)
+        data_state.reset_index(drop = True, inplace = True)
+        data_state["STATE"] = statename
+
+        if i==0:
+            data = data_state
+        else: 
+            data = pd.concat([data, data_state])
 
     output = open(outputfilename, 'wb')
     pickle.dump(data, output)
