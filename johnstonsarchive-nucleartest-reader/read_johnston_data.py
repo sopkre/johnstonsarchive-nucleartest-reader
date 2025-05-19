@@ -10,11 +10,6 @@ import pandas as pd
 import JohnstonarchiveReader
 
 
-
-
-
-########   get data    #################
-
 def get_data_from_johnstonarchive(urls, lines, indices, statename):
     """
     Helper function to read data from the Johnstonarchive using the JohnstonarchiveReader
