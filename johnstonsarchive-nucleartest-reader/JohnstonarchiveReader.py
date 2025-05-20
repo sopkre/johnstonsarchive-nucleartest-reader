@@ -116,7 +116,7 @@ class JohnstonarchiveReader():
         for i, d in enumerate(self.data_):
 
             d["ID"] = int(d["ID"])
-            
+
             # Enable int for the DAY column
             if d["DAY"] is None: 
                 d["DAY"] = -1 
@@ -199,12 +199,7 @@ class JohnstonarchiveReader():
         for j, (descr, par_dict) in enumerate(self.col_parameters_.items()):
             if par_dict["dtype"] is int or par_dict["dtype"] is float:
                 try:
-                    if descr == "DAY":
-                        print(self.statename_, "<<<<<######################################")
-                        print("BEFIORE", df[descr].dtype)
                     df[descr] = pd.to_numeric(df[descr])
-                    if descr == "DAY":
-                        print("AFTER", df[descr].dtype)
                 except ValueError:
                     print(f"Cannot convert col {descr} to numeric. ")
         return df
