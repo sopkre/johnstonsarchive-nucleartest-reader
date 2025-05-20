@@ -80,11 +80,11 @@ class JohnstonarchiveReader():
             for j, (descr, par_dict) in enumerate(self.col_parameters_.items()):
                 value = line[ par_dict["indices"][0]:par_dict["indices"][1] ]
                 if value.strip() == "":
-                    data[i][j] = np.nan
+                    data[i][j] = None
                 else: 
                     data[i][j] = value.strip()
 
-        dt = [ (n, 'object') for n in self.col_parameters_] # np.nans prevent setting better dtypes for array; done later for pandas dataframe however
+        dt = [ (n, 'object') for n in self.col_parameters_] # Nones prevent setting better dtypes for array; done later for pandas dataframe however
         self.data_ = np.array( [tuple(x) for x in data], dtype = np.dtype(dt))
         
         self.clean_typos_and_column_spillovers()
@@ -103,7 +103,7 @@ class JohnstonarchiveReader():
         for (descr, par_dict) in self.col_parameters_.items():
             if par_dict["dtype"] is int or par_dict["dtype"] is float:
                 for i, val in enumerate(self.data_[descr]):
-                    if val is not np.nan:
+                    if val is not None:
                         try:
                             self.data_[descr][i] = par_dict["dtype"] (val)
                         except ValueError:
@@ -119,7 +119,7 @@ class JohnstonarchiveReader():
 
             # Fix typo in time col (US table)
             t = d["TIME"]
-            if t is not np.nan:
+            if t is not None:
                 d["TIME"] = t.replace(';', ':') 
 
             # Fix some typos for USSR in YIELD col
@@ -137,30 +137,30 @@ class JohnstonarchiveReader():
             # Fix lines that spill over from SHOTNAME to SHOTTYPE
             s = d["SHOTTYPE"]
             n = d["SHOTNAME"]
-            if s not in [np.nan, "SS", "S", "X", "*", "?"]:
-                print(f"[INFO] (ID {d["ID"]}): ('{n}' | '{s}') => ('{n+s}' | 'np.nan') for (SHOTNAME | SHOTTYPE)")
+            if s not in [None, "SS", "S", "X", "*", "?"]:
+                print(f"[INFO] (ID {d["ID"]}): ('{n}' | '{s}') => ('{n+s}' | 'None') for (SHOTNAME | SHOTTYPE)")
                 d["SHOTNAME"] = n + s
-                d["SHOTTYPE"] = np.nan
+                d["SHOTTYPE"] = None
 
             # Fix lines that spill over from WARHEAD to SPONSOR
             s = d["SPONSOR"]
             w = d["WARHEAD"]
-            if s not in [np.nan, "KB-11", "Ch-70", "KB-11?", "Ch-70?", "LANL", "LLNL", "DOD", "UK", "SNL"]:
-                if w is not np.nan:
-                    print(f"[INFO] (ID {d["ID"]}): ('{w}' | '{s}') => ('{w+s}' | 'np.nan') for (WARHEAD | SPONSOR)")
+            if s not in [None, "KB-11", "Ch-70", "KB-11?", "Ch-70?", "LANL", "LLNL", "DOD", "UK", "SNL"]:
+                if w is not None:
+                    print(f"[INFO] (ID {d["ID"]}): ('{w}' | '{s}') => ('{w+s}' | 'None') for (WARHEAD | SPONSOR)")
                     d["WARHEAD"] = w + s
-                    d["SPONSOR"] = np.nan
+                    d["SPONSOR"] = None
 
             # Fix lines that spill over from SPONSOR to R and N
             s = d["SPONSOR"]
             r = d["R"]
             n = d["N"]
-            if r not in [np.nan, "A", "S", "P", "X"]:
-                if s is not np.nan and n is not np.nan:
-                    print(f"[INFO] (ID {d["ID"]}): ('{s}' | '{r}'| '{n}') => ('{s+r+n}' | 'np.nan' | 'np.nan' )  for (SPONSOR | R | N)")
+            if r not in [None, "A", "S", "P", "X"]:
+                if s is not None and n is not None:
+                    print(f"[INFO] (ID {d["ID"]}): ('{s}' | '{r}'| '{n}') => ('{s+r+n}' | 'None' | 'None' )  for (SPONSOR | R | N)")
                     d["SPONSOR"] = s + r + n
-                    d["R"] = np.nan
-                    d["N"] = np.nan
+                    d["R"] = None
+                    d["N"] = None
 
             # Fix cut off sponsor
             if s == "KB-11/" or s == "KB-11/Ch-7":
@@ -169,20 +169,20 @@ class JohnstonarchiveReader():
             # Fix lines that spill over from VENT to DEVICE
             dv = d["DEVICE"]
             v = d["VENT"]
-            if dv not in [np.nan, "IP", "BF", "TN", "FS", "TN?", "FZ", "IC", "IP", "IU", "ND", "SL"]:
-                if v is not np.nan:
-                    print(f"[INFO] (ID {d["ID"]}): ('{v}' | '{dv}') => ('{v+dv}' | 'np.nan') for (VENT | DEVICE)")
+            if dv not in [None, "IP", "BF", "TN", "FS", "TN?", "FZ", "IC", "IP", "IU", "ND", "SL"]:
+                if v is not None:
+                    print(f"[INFO] (ID {d["ID"]}): ('{v}' | '{dv}') => ('{v+dv}' | 'None') for (VENT | DEVICE)")
                     d["VENT"] = v + dv
-                    d["DEVICE"] = np.nan 
+                    d["DEVICE"] = None 
 
             # Fix lines that spill over from YD-EST to YIELD-NT
             y = d["YD-EST"]
             ynt = d["NT-YD"]
-            if ynt not in [np.nan, "MX", "E", "?", "S", "T", "T*", "S>", "T>", "**", "R? S"]:
-                if y is not np.nan:
-                    print(f"[INFO] (ID {d["ID"]}): ('{y}' | '{ynt}') => ('{y+ynt}' | 'np.nan') for (YD-EST | NT-YD)")
+            if ynt not in [None, "MX", "E", "?", "S", "T", "T*", "S>", "T>", "**", "R? S"]:
+                if y is not None:
+                    print(f"[INFO] (ID {d["ID"]}): ('{y}' | '{ynt}') => ('{y+ynt}' | 'None') for (YD-EST | NT-YD)")
                     d["YD-EST"] = y + ynt
-                    d["NT-YD"] = np.nan
+                    d["NT-YD"] = None
 
         print("\n ### [INFO] Cleaned general typos and column spillovers. ### \n")
 
@@ -195,7 +195,12 @@ class JohnstonarchiveReader():
         for j, (descr, par_dict) in enumerate(self.col_parameters_.items()):
             if par_dict["dtype"] is int or par_dict["dtype"] is float:
                 try:
+                    if descr == "DAY":
+                        print(self.statename_, "<<<<<######################################")
+                        print("BEFIORE", df[descr].dtype)
                     df[descr] = pd.to_numeric(df[descr])
+                    if descr == "DAY":
+                        print("AFTER", df[descr].dtype)
                 except ValueError:
                     print(f"Cannot convert col {descr} to numeric. ")
         return df
@@ -228,7 +233,7 @@ class JohnstonarchiveReader():
         datetimes = []
         for d in self.data_:
             (y, m, d, t) = (d["YEAR"], d["MON"], d["DAY"], d["TIME"]) 
-            if t is np.nan: 
+            if t is None: 
                 datetimes += [np.datetime64("NaT")]
             else:
                 datetimes += [ np.datetime64(f"{y}-{months[m]:02}-{d:02} {t}") ]
@@ -257,16 +262,16 @@ class JohnstonarchiveReader():
         for i, d in enumerate(data_with_vent_info):
             vent = d["VENT_orig"]
 
-            if vent in ["", np.nan]:
+            if vent in ["", None]:
                 d["VENT_occured"] = False
-                d["VENT"] = np.nan
+                d["VENT"] = None
                 continue
 
             if vent.find("V") > -1: 
                 d["VENT_occured"] = True
                 vent = vent.replace("V", "")
                 if vent.strip() == "":
-                    d["VENT"] = np.nan
+                    d["VENT"] = None
                     continue
             
             if self.statename_ == "US" and d["ID"] == 245:
@@ -350,8 +355,8 @@ class JohnstonarchiveReader():
                 d["YIELD_value_remark"] = "mid of range"
             else:
                 try: 
-                    if d["YIELD_orig"] in [np.nan, ""]:
-                        d["YIELD"] = np.nan
+                    if d["YIELD_orig"] in [None, ""]:
+                        d["YIELD"] = None
                     else:
                         d["YIELD"] = float(d["YIELD_orig"])
                 except ValueError:
@@ -394,8 +399,8 @@ class JohnstonarchiveReader():
                     d["YD-EST_value_remark"] = "?"
             else: 
                 try: 
-                    if d["YD-EST_orig"] == "":
-                        d["YD-EST"] = np.nan
+                    if d["YD-EST_orig"] in [None, ""] :
+                        d["YD-EST"] = None
                     else: 
                         if d["YD-EST_orig"].find("<") > -1:
                             d["YD-EST_value_remark"] = "<"
@@ -428,29 +433,29 @@ class JohnstonarchiveReader():
         for i, d in enumerate(data_with_crat_info):
             crat = d["CRAT_orig"]
 
-            if crat in ["", np.nan]:
+            if crat in ["", None]:
                 d["CRAT_occured"] = False
-                d["CRAT"] = np.nan
+                d["CRAT"] = None
                 continue
 
             if crat.find("C") > -1: 
                 d["CRAT_occured"] = True
                 crat = crat.replace("C", "")
                 if crat.strip() == "":
-                    d["CRAT"] = np.nan
+                    d["CRAT"] = None
                     continue
             
             if crat.find("?") > -1: 
                 d["CRAT_occured"] = False
                 crat = crat.replace("?", "")
                 if crat.strip() == "":
-                    d["CRAT"] = np.nan
+                    d["CRAT"] = None
                     d["CRAT_value_remark"] = '?'
                     continue
 
             try: 
                 d["CRAT"] = float(crat)
-                if d["CRAT"] > 0 and d["CRAT"] is not np.nan:
+                if d["CRAT"] > 0 and d["CRAT"] is not None:
                     d["CRAT_occured"] = True
             except ValueError: 
                 assert False, f"=========> Issue at ID {d['ID']} and CRAT = {d['CRAT_orig']}"
