@@ -1,0 +1,96 @@
+# source: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2022JB024728
+
+general:
+  state: DPRK
+
+data: # exclude NK1 and NK2, as they are already in the Johnston dataset.  
+
+  # NK1: 
+  #   ID : 4001
+  #   SHOTNAME : NK1
+  #   YEAR : 2006
+  #   MON : OCT
+  #   DAY : 09
+  #   TIME : "01:35:27.794"
+  #   LAT : 41.288624
+  #   LONG :  129.109951
+  #   HOB : -0.43
+  #   TYPE :  UG
+  #   YIELD : 1.3
+  #   DATETIME: 2006-10-09 01:35:27.794
+  #   STATE : DPRK
+
+  # NK2: 
+  #   ID : 4002
+  #   SHOTNAME : NK2
+  #   YEAR : 2009
+  #   MON : MAY
+  #   DAY : 29
+  #   TIME : "00:54:42.957"
+  #   LAT : 41.295270
+  #   LONG :  129.083951
+  #   HOB : -0.6
+  #   TYPE :  UG
+  #   YIELD : 5.3
+  #   DATETIME: 2009-05-29 00:54:42.957
+  #   STATE : DPRK
+
+  NK3: 
+    ID : 4003
+    SHOTNAME : NK3
+    YEAR : 2013
+    MON : FEB
+    DAY : 12
+    TIME : "02:57:51.115"
+    LAT : 41.293223
+    LONG :  129.079708
+    HOB : -0.43
+    TYPE :  UG
+    YIELD : 11.6
+    DATETIME: 2013-02-12 02:57:51.115
+    STATE : DPRK
+
+  NK4: 
+    ID : 4004
+    SHOTNAME : NK4 
+    YEAR : 2016
+    MON : JAN
+    DAY : 06 
+    TIME : "01:30:00.825"
+    LAT : 41.299190
+    LONG :  129.075859
+    HOB : -0.71
+    TYPE :  UG
+    YIELD : 10.7
+    DATETIME: 2016-01-06 01:30:00.825
+    STATE : DPRK
+
+  NK5: 
+    ID : 4005
+    SHOTNAME : NK5 
+    YEAR : 2016
+    MON : SEP
+    DAY : 09 
+    TIME : "00:30:01.143"
+    LAT : 41.299942
+    LONG :  129.080921
+    HOB : -0.71
+    TYPE :  UG
+    YIELD : 18.2
+    DATETIME: 2016-09-09 00:30:01.143
+    STATE : DPRK
+
+  NK6: 
+    ID : 4006
+    SHOTNAME : NK6 
+    YEAR : 2017
+    MON : SEP
+    DAY : 03 
+    TIME : "03:30:01.488"
+    LAT : 41.298840
+    LONG :  129.080460
+    HOB : -0.71
+    TYPE :  UG
+    YIELD : 201.6
+    DATETIME: 2017-09-03 03:30:01.488
+    STATE : DPRK

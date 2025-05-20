@@ -1,0 +1,49 @@
+
+general:
+  state: 
+
+TESTNAME: 
+  ID : 
+  SERIES :
+  SHOTNAME : 
+  SHOTTYPE : 
+  YEAR : 
+  MON : 
+  DAY : 
+  TIME : 
+  SITE :
+  LAT : 
+  LONG :  
+  NT-LONG :   
+  HOLE :  
+  HOB : 
+  GZALT : 
+  NT-GZALT  :  
+  TYPE :  
+  PUR :
+  YD-MN :  
+  YD-MX :  
+  YD-EST_orig :  
+  NT-YD :  
+  YIELD_orig :  
+  MAG :
+  CRAT_orig :
+  VENT_orig :
+  DEVICE :
+  WARHEAD :  
+  SPONSOR :  
+  R :  
+  N :  
+  SOURCES :  
+  YIELD : 
+  YIELD_value_remark :
+  YD-EST  : 
+  YD-EST_value_remark  
+  CRAT :  
+  CRAT_occured :
+  CRAT_value_remark : 
+  VENT :  
+  VENT_occured :
+  VENT_value_remark : 
+  DATETIME : 
+  STATE : 
