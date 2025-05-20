@@ -93,13 +93,14 @@ def main(yamlfilename, outputfilename):
             indices_dtypes[key][2] = dataypes_map[indices_dtypes[key][2]]
 
         data_state = get_data_from_johnstonarchive(urls, table_lines_in_html, indices_dtypes, statename)
-        data_state.reset_index(drop = True, inplace = True)
         data_state["STATE"] = statename
 
         if i==0:
             data = data_state
         else: 
             data = pd.concat([data, data_state])
+
+    data.reset_index(drop = True, inplace = True)
 
     output = open(outputfilename, 'wb')
     pickle.dump(data, output)
