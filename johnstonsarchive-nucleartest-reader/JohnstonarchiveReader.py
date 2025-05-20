@@ -116,6 +116,10 @@ class JohnstonarchiveReader():
         for i, d in enumerate(self.data_):
 
             d["ID"] = int(d["ID"])
+            
+            # Enable int for the DAY column
+            if d["DAY"] is None: 
+                d["DAY"] = -1 
 
             # Fix typo in time col (US table)
             t = d["TIME"]
