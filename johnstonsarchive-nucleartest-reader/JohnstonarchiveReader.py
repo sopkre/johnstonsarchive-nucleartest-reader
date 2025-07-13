@@ -254,12 +254,13 @@ class JohnstonarchiveReader():
         data_with_vent_info = make_extended_array(self.data_, [
             ('VENT', 'float'),
             ('VENT_occured', 'bool'), 
-            ('VENT_value_remark', 'str')
+            ('VENT_value_remark', object)
             ]) 
 
         f = 0
         for i, d in enumerate(data_with_vent_info):
             vent = d["VENT_orig"]
+            d["VENT_value_remark"] = None
 
             if vent in ["", None]:
                 d["VENT_occured"] = False
@@ -342,11 +343,12 @@ class JohnstonarchiveReader():
 
         data_with_float_yields = make_extended_array(self.data_, [
             ('YIELD', 'float'), 
-            ('YIELD_value_remark', 'str'), 
+            ('YIELD_value_remark', object), 
         ]) 
 
         # Fix yield 
         for i, d in enumerate(data_with_float_yields):
+            d["YIELD_value_remark"] = None
             if isinstance(d["YIELD_orig"], float): 
                 d["YIELD"] = d["YIELD_orig"]
             elif self.statename_ == "USSR" and d["ID"] == 550:
@@ -380,11 +382,12 @@ class JohnstonarchiveReader():
 
         data_with_float_yields = make_extended_array(self.data_, [
             ('YD-EST', 'float'),
-            ('YD-EST_value_remark', 'str')
+            ('YD-EST_value_remark', object)
         ]) 
 
         # Fix yield 
         for i, d in enumerate(data_with_float_yields):
+            d["YD-EST_value_remark"] = None
             if isinstance(d["YD-EST_orig"], float):
                 d["YD-EST"] = d["YD-EST_orig"]
             elif self.statename_ == "USSR" and d["ID"] == 158: 
@@ -426,11 +429,12 @@ class JohnstonarchiveReader():
         data_with_crat_info = make_extended_array(self.data_, [
             ('CRAT', 'float'),
             ('CRAT_occured', 'bool'), 
-            ('CRAT_value_remark', 'str')
+            ('CRAT_value_remark', object)
             ]) 
 
         for i, d in enumerate(data_with_crat_info):
             crat = d["CRAT_orig"]
+            d['CRAT_value_remark'] = None
 
             if crat in ["", None]:
                 d["CRAT_occured"] = False
