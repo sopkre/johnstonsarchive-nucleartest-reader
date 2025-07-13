@@ -17,10 +17,39 @@ def main(infilename, outfilename):
     infile = open(infilename, 'rb')
     df = pickle.load(infile)
 
-    html_table = df.to_html()
+    html_table = df.to_html(index=False, border=1)
+
+    styled_html = f"""
+    <html>
+    <head>
+        <style>
+            table {{
+                width: 60%;
+                border-collapse: collapse;
+                margin: 20px auto;
+            }}
+            th, td {{
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }}
+            th {{
+                background-color: #4CAF50;
+                color: white;
+            }}
+            tr:nth-child(even) {{
+                background-color: #f2f2f2;
+            }}
+        </style>
+    </head>
+    <body>
+        {html_table}
+    </body>
+    </html>
+    """
 
     outfile = open(outfilename, "w")
-    outfile.write(html_table)
+    outfile.write(styled_html)
     outfile.close()
 
 
