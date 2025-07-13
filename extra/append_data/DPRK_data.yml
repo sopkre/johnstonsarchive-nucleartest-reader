@@ -55,7 +55,7 @@ data: # exclude NK1 and NK2, as they are already in the Johnston dataset.
     SHOTNAME : NK4 
     YEAR : 2016
     MON : JAN
-    DAY : 06 
+    DAY : 6 
     TIME : "01:30:00.825"
     LAT : 41.299190
     LONG :  129.075859
@@ -70,7 +70,7 @@ data: # exclude NK1 and NK2, as they are already in the Johnston dataset.
     SHOTNAME : NK5 
     YEAR : 2016
     MON : SEP
-    DAY : 09 
+    DAY : 9 
     TIME : "00:30:01.143"
     LAT : 41.299942
     LONG :  129.080921
@@ -85,7 +85,7 @@ data: # exclude NK1 and NK2, as they are already in the Johnston dataset.
     SHOTNAME : NK6 
     YEAR : 2017
     MON : SEP
-    DAY : 03 
+    DAY : 3 
     TIME : "03:30:01.488"
     LAT : 41.298840
     LONG :  129.080460
