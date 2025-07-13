@@ -13,8 +13,8 @@ cd ../extra/export_data
 python3.13 to_html.py -i ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_htmltable.html 
 python3.13 to_html.py -i ../../obtained_data/johnstonarchive_nucleartests_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_htmltable.html 
 
- python3.13 to_hdf.py -i ../../obtained_data/johnstonarchive_nucleartests_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_hdftable.hdf 
- python3.13 to_hdf.py -i ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_hdftable.hdf 
+ python3.13 to_hdf.py -i ../../obtained_data/johnstonarchive_nucleartests_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_hdftable.h5 
+ python3.13 to_hdf.py -i ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_hdftable.h5 
 
  python3.13 to_csv.py -i ../../obtained_data/johnstonarchive_nucleartests_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_csvtable.csv 
  python3.13 to_csv.py -i ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_dataframe.pkl -o ../../obtained_data/johnstonarchive_nucleartests_incl_latestDPRK_csvtable.csv 

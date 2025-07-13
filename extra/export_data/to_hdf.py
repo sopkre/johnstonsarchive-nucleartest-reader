@@ -22,7 +22,7 @@ def main(infilename, outfilename):
     df["CRAT_occured"] = df["CRAT_occured"].astype(str)
     df["VENT_occured"] = df["VENT_occured"].astype(str)
 
-    df.to_hdf(outfilename, key='data', format='table', data_columns=True)
+    df.to_hdf(outfilename, key='data', data_columns=True)
 
 
 if __name__ == "__main__":
