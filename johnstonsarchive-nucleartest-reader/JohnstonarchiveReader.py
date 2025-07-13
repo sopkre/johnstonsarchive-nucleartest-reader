@@ -364,6 +364,7 @@ class JohnstonarchiveReader():
                     assert False, f"=========> ERROR! With ID {d['ID']} and YIELD: {d['YIELD_orig']}"
 
         self.data_ = data_with_float_yields
+        self.data_["YIELD_orig"] = self.data_["YIELD_orig"].astype(str) # for hdf-export: avoid mixed datatypes
 
         print("\n ### [INFO] Cleaned YIELD data. ### \n")
 
