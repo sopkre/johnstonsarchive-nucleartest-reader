@@ -6,7 +6,7 @@ import yaml
 
 import pandas as pd
 
-def main(infilename, appendfilename, outfilename):
+def main(infilename, appendfilename, outfilename, delete_state=None):
     """
     Adds data to the read-in data and saves the result. 
 
@@ -21,6 +21,10 @@ def main(infilename, appendfilename, outfilename):
     """
     pkl_file = open(infilename, 'rb')
     df = pickle.load(pkl_file)
+    
+    if delete_state is not None:
+        df.drop(df[df.STATE==delete_state].index, inplace=True)
+        print(f"[INFO] Removed all rows with data from {delete_state}!")
 
     with open(appendfilename, 'r') as file:
         new_data = yaml.safe_load(file)
@@ -49,9 +53,10 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--infilename", help="pickled pd.Dataframe containing nuclear tests from johnston archive", required=True)
     parser.add_argument("-a", "--appendfilename", help="yaml with data to append", required=True)
     parser.add_argument("-o", "--outfilename", help="resulting pickled pd.Dataframe", required=True)
+    parser.add_argument("-d", "--delete_state", help="if you would like to delete some state from existing dataset", required=False)
 
     args = parser.parse_args()
 
-    main(args.infilename, args.appendfilename, args.outfilename)
+    main(args.infilename, args.appendfilename, args.outfilename, args.delete_state)
 
 
