@@ -93,6 +93,7 @@ class JohnstonarchiveReader():
         self.fix_est_yield_values()
         self.add_crat_bool_and_values()
         self.add_vent_bool_and_values()
+        self.fix_purpose_values()
 
         self.convert_data()
 
@@ -466,3 +467,16 @@ class JohnstonarchiveReader():
 
         print("\n ### [INFO] Cleaned crat data. ### \n")
         self.data_ = data_with_crat_info
+
+    def fix_purpose_values(self):
+        """
+            In France table, there are entries "WR/P" which are supposed to be "WR/PR" (as "PR" is the only option starting with P). Fixes those entries.
+        """
+        assert len(self.data_) != 0, "[ERROR] Need to read data first."
+
+        for i, d in enumerate(self.data_):
+            if d["PUR"] == "WR/P":
+                d["PUR"] = "WR/PR"
+        print("\n ### [INFO] Cleaned PUR data. ### \n")
+
+            
