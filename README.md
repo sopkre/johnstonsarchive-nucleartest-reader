@@ -17,7 +17,7 @@ or, if you'd like to run over all yaml files and produce one output dataframe
 
 The Johnston Archive only lists two nuclear weapon tests of DPRK. Since 2013, there are four more, which can be added via 
 ```
-./append_data.py -i INPUT.pkl -a DPRK_data.yml -o INPUT_PLUS_DATA.pkl
+./append_data.py -i INPUT.pkl -a DPRK_data.yml -o OUTPUT.pkl
 ```
 in the extra folder.
 
@@ -25,3 +25,12 @@ in the extra folder.
 ## Obtained data
 
 In obtained_data, you can find the extracted data as pickled pd.Dataframe or exported html table to directly download and use. Both the pure JohnstonArchive data and these with appended latest DPRK tests is available. 
+
+
+## Add geolocations 
+
+To add information on the geolocation of test coordinates, use 
+```
+usage: add_geolocations.py [-h] -i INFILENAME -o OUTFILENAME -g OCEANSGEOMETRIES -j COUNTRYREGIONJSON
+```
+where ```OCEANSGEOMETRIES``` is a .gpkg file that contains all ocean bounding boxes (I take the file from: Flanders Marine Institute (2021). Global Oceans and Seas, version 1. Available online at https://www.marineregions.org/. https://doi.org/10.14284/542), and ```COUNTRYREGIONJSON``` a file mapping the country code (CC) to the UN geoscheme region (if it does not exist, it will be downloaded from [here](https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/refs/heads/master/all/all.json))
