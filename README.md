@@ -24,7 +24,11 @@ in the extra folder.
 
 ## Obtained data
 
-In obtained_data, you can find the extracted data as pickled pd.Dataframe or exported html table to directly download and use. Both the pure JohnstonArchive data and these with appended latest DPRK tests is available. 
+In obtained_data, you can find the extracted data as pickled pd.Dataframe or exported html table to directly download and use. The following csv versions are available (other formats similarly): 
+
+- ```johnstonarchive_nucleartests_csvtable.csv```: plain johnston archive data
+- ```johnstonarchive_nucleartests_externalDPRK_csvtable.csv```: johnston archive, but DPRK taken from [here](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2022JB024728)
+- ```johnstonarchive_nucleartests_externalDPRK_csvtable.csv```: version above but with geolocation information attached
 
 
 ## Add geolocations 
