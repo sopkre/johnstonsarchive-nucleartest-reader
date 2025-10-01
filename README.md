@@ -28,7 +28,7 @@ In obtained_data, you can find the extracted data as pickled pd.Dataframe or exp
 
 - ```johnstonarchive_nucleartests_csvtable.csv```: plain johnston archive data
 - ```johnstonarchive_nucleartests_externalDPRK_csvtable.csv```: johnston archive, but DPRK taken from [here](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2022JB024728)
-- ```johnstonarchive_nucleartests_externalDPRK_csvtable.csv```: version above but with geolocation information attached
+- ```johnstonarchive_nucleartests_externalDPRK_inclGeolocs_csvtable.csv```: version above but with geolocation information attached
 
 
 ## Add geolocations 
