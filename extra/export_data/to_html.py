@@ -32,6 +32,7 @@ def main(infilename, outfilename):
                 border: 1px solid black;
                 padding: 8px;
                 text-align: center;
+                white-space: nowrap;
             }}
             th {{
                 background-color: #4CAF50;
